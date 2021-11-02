@@ -1,7 +1,7 @@
 config {
   type: "declaration",
-  database: "SNOWFLAKE_SAMPLE_DATA",
-  schema: "TPCH_SF1",
+  database: "DEVELOPER_SANDBOX",
+  schema: "DEMO_SQUARE",
   name: "ORDERS",
   description: "Raw orders table"
 }

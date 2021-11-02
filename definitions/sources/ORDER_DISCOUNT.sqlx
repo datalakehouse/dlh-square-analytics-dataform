@@ -2,6 +2,6 @@ config {
   type: "declaration",
   database: "DEVELOPER_SANDBOX",
   schema: "DEMO_SQUARE",
-  name: "CUSTOMER",
-  description: "Raw customers table"
+  name: "ORDER_DISCOUNT",
+  description: "Raw order discounts table"
 }

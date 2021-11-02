@@ -1,0 +1,22 @@
+config {
+  type: "table",
+  tags: ["reporting", "daily"],
+  description: "This is the customers dimension table",
+  columns: {
+    CUSTOMER_ID: "ID of the customer",
+    FULL_NAME: "Full name of the customer"
+  },
+  assertions: {
+    nonNull: ["CUSTOMER_ID"],
+    uniqueKey: ["CUSTOMER_ID"],
+   /* rowConditions: [
+      "total_parts >= 0"
+    ]*/
+  }
+}
+
+
+SELECT
+  *
+FROM
+  ${ref("W_CUSTOMER_STG")} AS C
