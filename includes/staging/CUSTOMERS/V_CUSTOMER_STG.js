@@ -1,4 +1,6 @@
- module.exports = (params) => {
+const common = require("./common.js");
+
+module.exports = (params) => {
   return publish("V_CUSTOMER_STG", {
   type: "view",
   schema: params.target_schema,
