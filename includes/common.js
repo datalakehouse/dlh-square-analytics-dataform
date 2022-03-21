@@ -3,11 +3,11 @@
  * You can learn more about functions on https://docs.dataform.co/guides/includes
 */
 
-function fullName(firstName, lastName) {
-  return `${firstName} || ' ' || ${lastName}`;
-}
-
-module.exports = {
-  fullName
-};
- 
+function full_name(firstName, lastName) {
+    return `${firstName} || ' ' || ${lastName}`;
+  }
+  
+  module.exports = {
+    full_name
+  };
+   

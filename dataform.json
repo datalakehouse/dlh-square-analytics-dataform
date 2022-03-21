@@ -1,6 +1,6 @@
 {
     "warehouse": "snowflake",
-    "defaultSchema": "dataform",
-    "defaultDatabase": "DEVELOPER_SANDBOX",
-    "assertionSchema": "dataform_assertions"
+    "defaultSchema":  "DATAFORM_SQUARE",
+    "assertionSchema":  "DATAFORM_SQUARE",
+    "useRunCache": false
 }

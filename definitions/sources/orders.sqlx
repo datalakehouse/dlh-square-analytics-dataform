@@ -1,7 +1,0 @@
-config {
-  type: "declaration",
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE",
-  name: "ORDERS",
-  description: "Raw orders table"
-}
