@@ -35,68 +35,68 @@ module.exports = (params) => {
 } = params;
 
 const CUSTOMER = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "CUSTOMER"
 });
 const ORDER_DISCOUNT = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "ORDER_DISCOUNT"
 });
 const ORDER_LINE_ITEM = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "ORDER_LINE_ITEM"
 });
 const ORDER = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "ORDER"
 });
 const PAYMENT = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "PAYMENT"
 });
 const CATALOG_ITEM = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "CATALOG_ITEM"
 });
 const CATALOG_ITEM_VARIATION = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "CATALOG_ITEM_VARIATION"
 });
 const CATALOG_CATEGORY = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "CATALOG_CATEGORY"
 });
 const CATALOG_MODIFIER = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "CATALOG_MODIFIER"
 });
 const CATALOG_TAX = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "CATALOG_TAX"
 });
 const CATALOG_DISCOUNT = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "CATALOG_DISCOUNT"
 });
 const ORDER_LINE_ITEM_MODIFIER = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "ORDER_LINE_ITEM_MODIFIER"
 });
 const LOCATION = declare({
-  database: "DEVELOPER_SANDBOX",
-  schema: "DEMO_SQUARE_ALT13",
+  database: source_database,
+  schema: source_schema,
   name: "LOCATION"
 });
   return {
