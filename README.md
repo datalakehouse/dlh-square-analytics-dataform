@@ -35,17 +35,16 @@ Add the package to your `packages.json` file in your Dataform project. The last 
 Configuration
 -------------
 
-By default, this package uses `DEVELOPER_SANDBOX` as the source database name and `DEMO_SQUARE` as schema name. If this is not the where your Square data is, change ther below variables configuration on your `index.js` file:
+By default, this package uses `DEVELOPER_SANDBOX` as the source database name and `DEMO_SQUARE_ALT13` as schema name. If this is not the where your Square data is, change ther below variables configuration on your `index.js` file:
 
 ```javascript
-const source_database = "DEVELOPER_SANDBOX";
-const source_schema = "DEMO_SQUARE";
-const target_schema = "DATAFORM_SQUARE";
-module.exports = {
-  source_database,
-  source_schema,
-  target_schema
-}
+module.exports = (params) => {
+  params = {
+    source_database: 'DEVELOPER_SANDBOX',
+    source_schema: 'DEMO_SQUARE_ALT13',
+    target_schema: 'DATAFORM_SQUARE',
+    ...params
+  };
 ```
 
 Create a new JS file on your `definitions/` folder based with the folowing example:
