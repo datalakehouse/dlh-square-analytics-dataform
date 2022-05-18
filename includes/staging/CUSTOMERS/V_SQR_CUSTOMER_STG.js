@@ -1,7 +1,6 @@
 const common = require("../../common");
-
-module.exports = (params) => {
-  return publish("V_CUSTOMER_STG", {
+ module.exports = (params) => {
+  return publish("V_SQR_CUSTOMER_STG", {
   type: "view",
   schema: params.target_schema,
   tags: ["staging", "daily"],
@@ -52,5 +51,7 @@ SELECT
 
 
 SELECT * FROM rename
-`)
+`).preOps(ctx => `
+ alter session set query_tag = 'dataform|${dataform.projectConfig.defaultSchema}|${ctx.name()}'`
+ )
 }

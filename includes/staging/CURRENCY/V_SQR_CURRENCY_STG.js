@@ -1,5 +1,5 @@
  module.exports = (params) => {
-  return publish("V_CURRENCY_STG", {
+  return publish("V_SQR_CURRENCY_STG", {
   type: "view",
   schema: params.target_schema,
   tags: ["staging", "daily"],
@@ -33,5 +33,7 @@ SELECT
 
 select * from rename 
 
-`)
+`).preOps(ctx => `
+ alter session set query_tag = 'dataform|${dataform.projectConfig.defaultSchema}|${ctx.name()}'`
+ )
 }

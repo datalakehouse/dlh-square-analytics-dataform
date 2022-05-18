@@ -1,5 +1,5 @@
  module.exports = (params) => {
-  return publish("W_CATALOG_ITEM_D", {
+  return publish("W_SQR_CATALOG_ITEM_D", {
   type: "table",
   schema: params.target_schema,
   tags: ["staging", "daily"],
@@ -46,7 +46,7 @@ SELECT
   ,MD_LOAD_DTS
   ,MD_INTGR_ID
 FROM
-  ${ctx.ref("V_CATALOG_ITEM_VARIATION_STG")} AS CIV
+  ${ctx.ref("V_SQR_CATALOG_ITEM_VARIATION_STG")} AS CIV
 
 UNION ALL
 
@@ -73,12 +73,14 @@ SELECT
     ,MD_LOAD_DTS
     ,MD_INTGR_ID
 FROM
-  ${ctx.ref("V_CATALOG_ITEM_MODIFIER_STG")} AS CIM
+  ${ctx.ref("V_SQR_CATALOG_ITEM_MODIFIER_STG")} AS CIM
 
 
 
 
 
   
-`)
+`).preOps(ctx => `
+ alter session set query_tag = 'dataform|${dataform.projectConfig.defaultSchema}|${ctx.name()}'`
+ )
 }

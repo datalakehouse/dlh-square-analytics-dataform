@@ -1,5 +1,5 @@
  module.exports = (params) => {
-  return publish("V_ORDER_HEADER_STG", {
+  return publish("V_SQR_ORDER_HEADER_STG", {
   type: "view",
   schema: params.target_schema,
   tags: ["staging", "daily"],
@@ -47,5 +47,7 @@ FROM source
 )
 
 SELECT * FROM rename
-`)
+`).preOps(ctx => `
+ alter session set query_tag = 'dataform|${dataform.projectConfig.defaultSchema}|${ctx.name()}'`
+ )
 }

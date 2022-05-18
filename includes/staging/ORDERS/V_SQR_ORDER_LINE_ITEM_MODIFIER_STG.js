@@ -1,5 +1,5 @@
  module.exports = (params) => {
-  return publish("V_ORDER_LINE_ITEM_MODIFIER_STG", {
+  return publish("V_SQR_ORDER_LINE_ITEM_MODIFIER_STG", {
   type: "view",
   schema: params.target_schema,
   tags: ["staging", "daily"],
@@ -11,10 +11,10 @@ WITH source AS (
   SELECT * FROM  ${ctx.ref(params.source_schema,'ORDER_LINE_ITEM_MODIFIER')}
 ),
 source_order AS (
-SELECT DISTINCT K_POS_ORDER_DLHK,K_POS_LOCATION_BK  FROM  ${ctx.ref("V_ORDER_HEADER_STG")}
+SELECT DISTINCT K_POS_ORDER_DLHK,K_POS_LOCATION_BK  FROM  ${ctx.ref("V_SQR_ORDER_HEADER_STG")}
 ),
 source_order_line_item AS (
-SELECT DISTINCT A_POS_CATEGORY_NAME,K_POS_ORDER_DLHK,K_POS_CATALOG_OBJECT_DLHK,K_POS_CATALOG_OBJECT_BK, K_POS_ORDER_LINE_BK,A_POS_ORDER_LINE_NAME,A_POS_ORDER_LINE_VARIATION_NAME,K_POS_ORDER_BK FROM  ${ctx.ref("V_ORDER_LINE_ITEM_STG")}
+SELECT DISTINCT A_POS_CATEGORY_NAME,K_POS_ORDER_DLHK,K_POS_CATALOG_OBJECT_DLHK,K_POS_CATALOG_OBJECT_BK, K_POS_ORDER_LINE_BK,A_POS_ORDER_LINE_NAME,A_POS_ORDER_LINE_VARIATION_NAME,K_POS_ORDER_BK FROM  ${ctx.ref("V_SQR_ORDER_LINE_ITEM_STG")}
 ),
 source_catalog_modifier AS (
   SELECT * FROM  ${ctx.ref(params.source_schema,'CATALOG_MODIFIER')}
@@ -69,5 +69,7 @@ SELECT
  MD5(CONCAT(K_POS_CATALOG_OBJECT_DLHK,K_POS_LOCATION_BK,A_POS_PRODUCT_NAME,COALESCE(A_POS_MODIFIER_NAME,'NA'),K_POS_CATALOG_OBJECT_ITEM_DLHK)) AS K_POS_CATALOG_OBJECT_HASH_DLHK,
 *
  FROM rename
-`)
+`).preOps(ctx => `
+ alter session set query_tag = 'dataform|${dataform.projectConfig.defaultSchema}|${ctx.name()}'`
+ )
 }

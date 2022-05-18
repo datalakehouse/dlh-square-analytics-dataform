@@ -1,5 +1,5 @@
  module.exports = (params) => {
-  return publish("W_MERCHANT_LOCATION_D", {
+  return publish("W_SQR_MERCHANT_LOCATION_D", {
   type: "table",
   schema: params.target_schema,
   tags: ["staging", "daily"],
@@ -25,6 +25,8 @@
 SELECT
   *
 FROM
-  ${ctx.ref("V_MERCHANT_LOCATION_STG")} AS M
-`)
+  ${ctx.ref("V_SQR_MERCHANT_LOCATION_STG")} AS M
+`).preOps(ctx => `
+ alter session set query_tag = 'dataform|${dataform.projectConfig.defaultSchema}|${ctx.name()}'`
+ )
 }

@@ -1,5 +1,5 @@
  module.exports = (params) => {
-  return publish("W_DATE_D", {
+  return publish("W_SQR_DATE_D", {
   type: "table",
   schema: params.target_schema,
   tags: ["staging", "daily"],
@@ -48,6 +48,8 @@ SELECT
 	,CAST(EFFECTIVE_DATE AS DATE) AS A_EFFECTIVE_DATE
 	,CAST(EXPIRA_DATE AS DATE) AS A_EXPIRATION_DATE
 FROM
-${ctx.ref("V_DATE_STG")}
-`)
+${ctx.ref("V_SQR_DATE_STG")}
+`).preOps(ctx => `
+ alter session set query_tag = 'dataform|${dataform.projectConfig.defaultSchema}|${ctx.name()}'`
+ )
 }

@@ -1,5 +1,5 @@
  module.exports = (params) => {
-  return publish("V_CATALOG_CATEGORY_STG", {
+  return publish("V_SQR_CATALOG_CATEGORY_STG", {
     snowflake: { 
      transient: false 
   }, 
@@ -34,5 +34,7 @@ FROM
 )
 
 SELECT * FROM rename
-`)
+`).preOps(ctx => `
+ alter session set query_tag = 'dataform|${dataform.projectConfig.defaultSchema}|${ctx.name()}'`
+ )
 }

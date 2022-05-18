@@ -1,5 +1,5 @@
  module.exports = (params) => {
-  return publish("V_CATALOG_ITEM_VARIATION_STG", {
+  return publish("V_SQR_CATALOG_ITEM_VARIATION_STG", {
   type: "view",
   schema: params.target_schema,
   tags: ["staging", "daily"],
@@ -9,7 +9,7 @@
 
 WITH 
 source AS (
-SELECT * FROM  ${ctx.ref("V_ORDER_LINE_ITEM_STG")}
+SELECT * FROM  ${ctx.ref("V_SQR_ORDER_LINE_ITEM_STG")}
 ), renamed AS (
  SELECT  DISTINCT
  --MD5 KEYS        
@@ -42,5 +42,7 @@ renamed
 
 
 
-`)
+`).preOps(ctx => `
+ alter session set query_tag = 'dataform|${dataform.projectConfig.defaultSchema}|${ctx.name()}'`
+ )
 }

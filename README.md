@@ -13,12 +13,12 @@ The primary ouputs of this package are fact and dimension tables as listed below
     
 |        Type       |        Model       |        Raw tables involved       |
 |:----------------:|:----------------:|----------------|
-|Dimension| W_CATALOG_ITEM_D       | CATALOG_CATEGORY<br>CATALOG_MODIFIER<br>CATALOG_ITEM_VARIATION<br>CATALOG_ITEM<br>ORDER_LINE_ITEM<br>|
-|Dimension| W_CURRENCY_D         | Manually built |
-|Dimension| W_MERCHANT_LOCATION_D       | LOCATION |
-|Dimension| W_CUSTOMERS_D      | CUSTOMER|
-|Fact| W_ORDERS_F | ORDER<br>ORDER_LINE_ITEM<br>ORDER_LINE_ITEM_MODIFIER|
-|Fact| W_PAYMENTS_F          | PAYMENT|
+|Dimension| W_SQR_CATALOG_ITEM_D       | CATALOG_CATEGORY<br>CATALOG_MODIFIER<br>CATALOG_ITEM_VARIATION<br>CATALOG_ITEM<br>ORDER_LINE_ITEM<br>|
+|Dimension| W_SQR_CURRENCY_D         | Manually built |
+|Dimension| W_SQR_MERCHANT_LOCATION_D       | LOCATION |
+|Dimension| W_SQR_CUSTOMERS_D      | CUSTOMER|
+|Fact| W_SQR_ORDERS_F | ORDER<br>ORDER_LINE_ITEM<br>ORDER_LINE_ITEM_MODIFIER|
+|Fact| W_SQR_PAYMENTS_F          | PAYMENT|
 
 For more information about Square's objects, [use this URL.](https://developer.squareup.com/reference)
 

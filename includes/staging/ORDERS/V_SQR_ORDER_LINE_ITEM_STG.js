@@ -1,5 +1,5 @@
  module.exports = (params) => {
-  return publish("V_ORDER_LINE_ITEM_STG", {
+  return publish("V_SQR_ORDER_LINE_ITEM_STG", {
   type: "view",
   schema: params.target_schema,
   tags: ["staging", "daily"],
@@ -14,10 +14,10 @@ source_item_variation AS (
   SELECT * FROM  ${ctx.ref(params.source_schema,'CATALOG_ITEM_VARIATION')}
 ),
 source_order AS (
-SELECT DISTINCT K_POS_ORDER_DLHK,K_POS_LOCATION_BK  FROM  ${ctx.ref("V_ORDER_HEADER_STG")}
+SELECT DISTINCT K_POS_ORDER_DLHK,K_POS_LOCATION_BK  FROM  ${ctx.ref("V_SQR_ORDER_HEADER_STG")}
 ),
 source_category AS (
-  SELECT * FROM  ${ctx.ref("V_CATALOG_CATEGORY_STG")}
+  SELECT * FROM  ${ctx.ref("V_SQR_CATALOG_CATEGORY_STG")}
 ),
 source_item AS (
   SELECT * FROM  ${ctx.ref(params.source_schema,'CATALOG_ITEM')}
@@ -63,5 +63,7 @@ LEFT JOIN source_category AS CAT ON CAT.K_POS_CATALOG_CATEGORY_BK = SIT.CATEGORY
 SELECT 
  MD5(CONCAT(K_POS_CATALOG_OBJECT_DLHK,K_POS_LOCATION_BK,A_POS_PRODUCT_NAME,COALESCE(A_POS_ORDER_LINE_VARIATION_NAME,'NA'),K_POS_CATALOG_OBJECT_ITEM_DLHK)) AS K_POS_CATALOG_OBJECT_HASH_DLHK,
 * FROM rename
-`)
+`).preOps(ctx => `
+ alter session set query_tag = 'dataform|${dataform.projectConfig.defaultSchema}|${ctx.name()}'`
+ )
 }
